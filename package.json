@@ -1,0 +1,33 @@
+{
+    "name": "videojs-vimeo",
+    "version": "1.0.0",
+    "description": "Vimeo playback technology for Video.js",
+    "author": {
+        "name": "Zia Fazal",
+        "email": "zia.fazal@edly.io",
+        "url": "https://edly.io"
+    },
+    "license": "MIT",
+    "main": "dist/Vimeo.min.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/edly-io/videojs-vimeo.git"
+    },
+    "scripts": {
+        "build": "mkdir -p dist && uglifyjs src/Vimeo.js -o dist/Vimeo.min.js"
+    },
+    "devDependencies": {
+        "uglify-js": "^3.13.6"
+    },
+    "keywords": [
+        "video.js",
+        "vimeo",
+        "playback",
+        "tech"
+    ],
+    "bugs": {
+        "url": "https://github.com/edly-io/videojs-vimeo/issues",
+        "email": "zia.fazal@edly.io"
+    },
+    "homepage": "https://github.com/edly-io/videojs-vimeo"
+}
