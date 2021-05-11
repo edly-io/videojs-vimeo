@@ -1,4 +1,4 @@
-# Vimeo playback technology for for [Video.js](https://github.com/videojs/video.js)
+# Vimeo playback technology for [Video.js](https://github.com/videojs/video.js)
 
 ## Install
 You can use npm (`npm install videojs-vimeo-tech`) or the source and build it using `npm run-script build`
