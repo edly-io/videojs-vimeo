@@ -122,9 +122,6 @@ THE SOFTWARE. */
 
       if (typeof this.options_.muted !== 'undefined') {
         playerConfig.muted = this.options_.muted;
-        console.log(
-          `this.options_.muted = ${this.options_.muted} and playerConfig = ${playerConfig.muted}`
-        );
       }
       if (typeof this.options_.autoplay !== 'undefined') {
         playerConfig.autoplay = this.options_.autoplay;
@@ -145,7 +142,6 @@ THE SOFTWARE. */
       }
 
       this.vimeoPlayer = new Vimeo.Player(this.options_.techId, playerConfig);
-      console.log(playerConfig);
       this.vimeoInfo = {
         state: VimeoState.UNSTARTED,
         volume: playerConfig.muted ? 0 : 1,
@@ -374,7 +370,6 @@ THE SOFTWARE. */
         this.vimeoPlayer.setVolume(percentAsDecimal).then(function () {
           this_.vimeoInfo.volume = percentAsDecimal;
           this_.trigger('volumechange');
-          console.log(this_.vimeoInfo.volume, this_.vimeoInfo);
         });
       }
     },
@@ -389,11 +384,9 @@ THE SOFTWARE. */
       if (this.vimeoPlayer) {
         var this_ = this;
         this.vimeoPlayer.setMuted(mute).then(function () {
-          console.log(`muted was set to ${mute}`);
           this_.vimeoInfo.muted = mute;
           this_.muted(true);
           this_.trigger('volumechange');
-          console.log(this_.vimeoInfo.muted, this_.vimeoInfo);
         });
       }
     },
