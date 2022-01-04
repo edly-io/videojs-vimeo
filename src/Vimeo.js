@@ -123,6 +123,7 @@ THE SOFTWARE. */
       if (typeof this.options_.muted !== 'undefined') {
         playerConfig.muted = this.options_.muted;
       }
+
       if (typeof this.options_.autoplay !== 'undefined') {
         playerConfig.autoplay = this.options_.autoplay;
         // playerConfig.muted = this.options_.autoplay;
@@ -139,6 +140,10 @@ THE SOFTWARE. */
       if (typeof this.options_.source !== 'undefined') {
         playerConfig.url = this.options_.source.src;
         this.videoId = this.options_.source.src;
+      }
+
+      if (typeof this.options_.dnt !== 'undefined') {
+        playerConfig.dnt = this.options_.dnt;
       }
 
       this.vimeoPlayer = new Vimeo.Player(this.options_.techId, playerConfig);
