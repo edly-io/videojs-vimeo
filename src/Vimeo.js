@@ -106,6 +106,22 @@ THE SOFTWARE. */
       var divWrapper = document.createElement('div');
       divWrapper.appendChild(div);
 
+      if (!_isOnMobile && !this.options_.ytControls) {
+        var divBlocker = document.createElement('div');
+        divBlocker.setAttribute('class', 'vjs-iframe-blocker');
+        divBlocker.setAttribute(
+          'style',
+          'position:absolute;top:0;left:0;width:100%;height:100%'
+        );
+
+        // In case the blocker is still there and we want to pause
+        divBlocker.onclick = function () {
+          this.pause();
+        }.bind(this);
+
+        divWrapper.appendChild(divBlocker);
+      }
+
       return divWrapper;
     },
 
@@ -456,7 +472,11 @@ THE SOFTWARE. */
   }
 
   function injectCss() {
-    var css = '.vjs-vimeo-mobile .vjs-big-play-button { display: none; }';
+    var css = // iframe blocker to catch mouse events lifted from https://github.com/videojs/videojs-youtube/blob/master/src/Youtube.js
+      '.vjs-vimeo .vjs-iframe-blocker { display: none; }' +
+      '.vjs-vimeo.vjs-user-inactive .vjs-iframe-blocker { display: block; }' +
+      '.vjs-vimeo .vjs-poster { background-size: cover; }' +
+      '.vjs-vimeo-mobile .vjs-big-play-button { display: none; }';
 
     var head = document.head || document.getElementsByTagName('head')[0];
 
