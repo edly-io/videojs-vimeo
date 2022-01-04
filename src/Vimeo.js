@@ -472,7 +472,7 @@ THE SOFTWARE. */
   }
 
   function injectCss() {
-    var css = // iframe blocker to catch mouse events lifted from https://github.com/videojs/videojs-youtube/blob/master/src/Youtube.js
+    var css =
       '.vjs-vimeo .vjs-iframe-blocker { display: none; }' +
       '.vjs-vimeo.vjs-user-inactive .vjs-iframe-blocker { display: block; }' +
       '.vjs-vimeo .vjs-poster { background-size: cover; }' +
