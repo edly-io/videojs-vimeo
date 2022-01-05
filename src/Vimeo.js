@@ -106,7 +106,7 @@ THE SOFTWARE. */
       var divWrapper = document.createElement('div');
       divWrapper.appendChild(div);
 
-      if (!_isOnMobile && !this.options_.ytControls) {
+      if (!_isOnMobile) {
         var divBlocker = document.createElement('div');
         divBlocker.setAttribute('class', 'vjs-iframe-blocker');
         divBlocker.setAttribute(
@@ -472,10 +472,10 @@ THE SOFTWARE. */
   }
 
   function injectCss() {
-    var css =
-      '.vjs-vimeo .vjs-iframe-blocker { display: none; }' +
-      '.vjs-vimeo.vjs-user-inactive .vjs-iframe-blocker { display: block; }' +
-      '.vjs-vimeo .vjs-poster { background-size: cover; }' +
+    var css = // iframe blocker to catch mouse events
+      '.vjs-youtube .vjs-iframe-blocker { display: none; }' +
+      '.vjs-youtube.vjs-user-inactive .vjs-iframe-blocker { display: block; }' +
+      '.vjs-youtube .vjs-poster { background-size: cover; }' +
       '.vjs-vimeo-mobile .vjs-big-play-button { display: none; }';
 
     var head = document.head || document.getElementsByTagName('head')[0];
