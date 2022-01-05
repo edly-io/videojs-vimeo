@@ -124,7 +124,6 @@ THE SOFTWARE. */
       }
       // In case the blocker is still there and we want to pause
       divBlocker.onclick = function () {
-        console.log('clicked');
         this.pause();
       }.bind(this);
 
