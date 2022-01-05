@@ -95,6 +95,9 @@ THE SOFTWARE. */
     },
 
     createEl: function () {
+      var divWrapper = document.createElement('div');
+      divWrapper.setAttribute('class', 'amTest');
+
       var div = document.createElement('div');
       div.setAttribute('id', this.options_.techId);
       div.setAttribute(
@@ -103,24 +106,30 @@ THE SOFTWARE. */
       );
       div.setAttribute('class', 'vjs-tech');
 
-      var divWrapper = document.createElement('div');
       divWrapper.appendChild(div);
 
+      // if (!_isOnMobile) {
+      var divBlocker = document.createElement('div');
+      divBlocker.setAttribute('class', 'vjs-iframe-blocker');
       if (!_isOnMobile) {
-        var divBlocker = document.createElement('div');
-        divBlocker.setAttribute('class', 'vjs-iframe-blocker');
         divBlocker.setAttribute(
           'style',
-          'position:absolute;top:0;left:0;width:100%;height:100%'
+          'position:absolute;top:0;left:0;width:100%;height:100%;'
         );
-
-        // In case the blocker is still there and we want to pause
-        divBlocker.onclick = function () {
-          this.pause();
-        }.bind(this);
-
-        divWrapper.appendChild(divBlocker);
+      } else {
+        divBlocker.setAttribute(
+          'style',
+          'position:absolute;top:0;left:0;width:100%;height:100%;touch-action:auto;pointer-events:auto;z-index:2;'
+        );
       }
+      // In case the blocker is still there and we want to pause
+      divBlocker.onclick = function () {
+        console.log('clicked');
+        this.pause();
+      }.bind(this);
+
+      divWrapper.appendChild(divBlocker);
+      // }
 
       return divWrapper;
     },
@@ -473,9 +482,9 @@ THE SOFTWARE. */
 
   function injectCss() {
     var css = // iframe blocker to catch mouse events
-      '.vjs-vimeo .vjs-iframe-blocker { display: none; }' +
-      '.vjs-vimeo.vjs-user-inactive .vjs-iframe-blocker { display: block; }' +
-      '.vjs-vimeo .vjs-poster { background-size: cover; }' +
+      '.vjs-youtube .vjs-iframe-blocker { display: none; }' +
+      // '.vjs-youtube.vjs-user-inactive .vjs-iframe-blocker { display: block; }' +
+      // '.vjs-youtube .vjs-poster { background-size: cover; }' +
       '.vjs-vimeo-mobile .vjs-big-play-button { display: none; }';
 
     var head = document.head || document.getElementsByTagName('head')[0];
