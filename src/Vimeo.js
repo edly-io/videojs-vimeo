@@ -111,19 +111,33 @@ THE SOFTWARE. */
       // if (!_isOnMobile) {
       var divBlocker = document.createElement('div');
       divBlocker.setAttribute('class', 'vjs-iframe-blocker');
-      if (!_isOnMobile) {
-        divBlocker.setAttribute(
-          'style',
-          'position:absolute;top:0;left:0;width:100%;height:100%;'
-        );
-      } else {
-        divBlocker.setAttribute(
-          'style',
-          'position:absolute;top:0;left:0;width:100%;height:100%;touch-action:auto;pointer-events:auto;z-index:2;'
-        );
-      }
+      // if (!_isOnMobile) {
+      //   divBlocker.setAttribute(
+      //     'style',
+      //     'position:absolute;top:0;left:0;width:100%;height:100%;'
+      //   );
+      // } else {
+      divBlocker.setAttribute(
+        'style',
+        'position:absolute;top:0;left:0;width:100%;height:100%;'
+      );
+      // }
       // In case the blocker is still there and we want to pause
+      // when the big play button is clicked I want to add zindex to the blocker, when the blocker is clicked I want to remove that zindex, and finally I want to remove the zindex when the movie is done playing.
+      const bigPlayButton = document.querySelector('.vjs-big-play-button');
+      // bigPlayButton.setAttribute('style', 'z-index:2');
+
+      bigPlayButton.onclick = function () {
+        // setTimeout(divBlocker.setAttribute('style', 'z-index:100;'), 500);
+        // bigPlayButton.setAttribute('style', 'z-index:-1;');
+        divBlocker.setAttribute(
+          'style',
+          'position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;'
+        );
+      };
+
       divBlocker.onclick = function () {
+        // bigPlayButton.setAttribute('style', 'z-index:2;');
         this.pause();
       }.bind(this);
 
