@@ -122,22 +122,33 @@ THE SOFTWARE. */
         'position:absolute;top:0;left:0;width:100%;height:100%;'
       );
       // }
-      // In case the blocker is still there and we want to pause
-      // when the big play button is clicked I want to add zindex to the blocker, when the blocker is clicked I want to remove that zindex, and finally I want to remove the zindex when the movie is done playing.
       const bigPlayButton = document.querySelector('.vjs-big-play-button');
       // bigPlayButton.setAttribute('style', 'z-index:2');
 
-      bigPlayButton.onclick = function () {
-        // setTimeout(divBlocker.setAttribute('style', 'z-index:100;'), 500);
-        // bigPlayButton.setAttribute('style', 'z-index:-1;');
+      // bigPlayButton.onclick = function () {
+      //   console.log('on click click');
+      //   divBlocker.setAttribute(
+      //     'style',
+      //     'position:absolute;top:0;left:0;width:100%;height:87%;z-index:100;touch-action:auto;'
+      //   );
+      // }
+
+      bigPlayButton.addEventListener('touchstart', () => {
         divBlocker.setAttribute(
           'style',
-          'position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;'
+          'position:absolute;top:0;left:0;width:100%;height:87%;z-index:100;touch-action:auto;'
         );
-      };
+      });
+
+      divBlocker.addEventListener('touchstart', () => {
+        this.pause();
+        divBlocker.setAttribute(
+          'style',
+          'position:absolute;top:0;left:0;width:100%;height:87%;z-index:0;touch-action:auto;'
+        );
+      });
 
       divBlocker.onclick = function () {
-        // bigPlayButton.setAttribute('style', 'z-index:2;');
         this.pause();
       }.bind(this);
 
